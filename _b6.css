@@ -1,0 +1,77 @@
+/* ============================================================
+   第六批：内容深度模块样式 —— 热点专题库 + 五大题型框架卡 (_b6.css)
+   仅使用主站 :root 变量，全部类名以 b6- 前缀，避免与其它模块冲突
+   ============================================================ */
+.b6-wrap{max-width:1180px;margin:0 auto;padding:4px 2px 40px}
+.b6-h2{font-size:20px;color:var(--accent);margin:6px 0 10px;font-weight:700}
+.b6-note{background:var(--blue-soft);border:1px solid var(--line);border-left:4px solid var(--blue);
+  color:#334;font-size:13px;line-height:1.7;padding:10px 14px;border-radius:8px;margin-bottom:14px}
+.b6-note b{color:var(--accent)}
+
+/* ---------- 工具栏 / 搜索 / 标签筛选 ---------- */
+.b6-toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.b6-search{flex:1;min-width:240px;max-width:480px;padding:9px 14px;border:1px solid var(--line);
+  border-radius:8px;font-size:14px;outline:none;background:var(--panel)}
+.b6-search:focus{border-color:var(--red)}
+.b6-chips{display:flex;flex-wrap:wrap;gap:6px}
+.b6-chip{font-size:12px;padding:5px 12px;border-radius:14px;border:1px solid var(--line);
+  background:var(--panel);color:var(--sub);cursor:pointer;user-select:none}
+.b6-chip.on{background:var(--red);color:#fff;border-color:var(--red);font-weight:700}
+.b6-empty{text-align:center;color:var(--sub);padding:50px 0;font-size:14px}
+
+/* ---------- 热点专题网格 ---------- */
+.b6-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.b6-topic{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:8px}
+.b6-topic-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.b6-topic-name{font-size:15.5px;font-weight:700;color:var(--accent)}
+.b6-pill{font-size:11px;padding:1px 9px;border-radius:10px;background:var(--blue-soft);color:#4338ca;white-space:nowrap}
+.b6-sec{margin:2px 0}
+.b6-sech{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.b6-bg{font-size:13px;line-height:1.75;color:var(--txt)}
+.b6-ul{margin:0;padding-left:20px}
+.b6-ul .b6-li{font-size:13px;line-height:1.8;color:var(--txt)}
+.b6-quote{font-size:13.5px;line-height:1.8;color:var(--txt);padding:4px 0}
+.b6-qmark{color:var(--red);font-weight:700;margin-right:2px}
+.b6-qtext{font-style:italic}
+.b6-mini{display:inline-block;font-size:12px;color:var(--accent);cursor:pointer;border:1px solid var(--red-soft);
+  background:var(--red-soft);border-radius:6px;padding:3px 10px;user-select:none}
+.b6-mini:hover{background:var(--red);color:#fff}
+.b6-case{font-size:13px;line-height:1.8;color:var(--txt);padding:2px 0}
+.b6-link{display:inline-block;font-size:12px;color:var(--blue);margin-top:4px}
+.b6-topic-f{font-size:12px;color:var(--sub);border-top:1px dashed var(--line);padding-top:8px;margin-top:2px}
+
+/* ---------- 五大题型框架卡 ---------- */
+.b6-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.b6-tab{font-size:13px;padding:7px 16px;border-radius:18px;border:1px solid var(--line);
+  background:var(--panel);color:var(--sub);cursor:pointer;user-select:none}
+.b6-tab.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
+.b6-frame-wrap{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.b6-frame-title{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:10px}
+.b6-frame{display:flex;flex-direction:column;gap:12px}
+.b6-motto{background:var(--hl);border-radius:8px;padding:9px 14px;font-size:14px;font-weight:600;color:#7a5b00}
+.b6-frame .b6-sec{background:#fafafa;border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.b6-frame .b6-sech{font-size:13px}
+.b6-shen-h{color:var(--blue)}
+.b6-st-h{color:var(--accent)}
+.b6-nm-h{color:#4338ca}
+.b6-tp-h{color:var(--red)}
+.b6-sk-h{color:#0f766e}
+.b6-frame .b6-ol{margin:0;padding-left:22px}
+.b6-frame .b6-ol .b6-step{font-size:13px;line-height:1.8;color:var(--txt);margin:3px 0}
+.b6-frame .b6-ul .b6-li{font-size:13px;line-height:1.8}
+.b6-trap-li{color:#9a3412}
+.b6-norms{display:flex;flex-wrap:wrap;gap:6px}
+.b6-norm{font-size:12.5px;padding:4px 10px;border-radius:6px;background:var(--blue-soft);
+  color:#3730a3;border:1px solid #e0e7ff}
+.b6-skel{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:10px 14px}
+.b6-skel-h{font-size:13px;color:#0f766e;font-weight:700;margin-bottom:4px}
+.b6-skel .b6-ul .b6-li{font-size:12.5px;line-height:1.7}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:720px){
+  .b6-grid{grid-template-columns:1fr}
+  .b6-toolbar{flex-direction:column;align-items:stretch}
+  .b6-search{max-width:none}
+}
