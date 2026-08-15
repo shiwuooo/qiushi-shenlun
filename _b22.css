@@ -1,0 +1,23 @@
+/* 第22批：坚果云异地同步 样式 */
+.b22-card{ background:rgba(255,255,255,0.04); border:1px solid rgba(120,160,140,0.18); border-radius:10px; padding:14px 16px; margin:12px 0; }
+.b22-h3{ font-weight:600; margin-bottom:8px; font-size:14px; color:#cfe4d8; }
+.b22-row{ display:flex; gap:8px; padding:4px 0; font-size:13px; align-items:center; }
+.b22-k{ width:80px; color:#9bb4a8; flex-shrink:0; }
+.b22-v{ color:#e8f0eb; }
+.b22-on{ color:#7be3a4 !important; }
+.b22-off{ color:#9bb4a8 !important; }
+.b22-err{ color:#ff9090 !important; }
+.b22-ok{ color:#7be3a4 !important; margin-top:6px; font-size:12px; }
+.b22-err-block{ background:rgba(255,80,80,0.08); border:1px solid rgba(255,80,80,0.25); color:#ffb0b0; padding:8px 10px; border-radius:6px; margin-top:8px; font-size:12px; }
+.b22-tip{ color:#9bb4a8; font-size:12px; margin:6px 0 0 0; line-height:1.55; }
+.b22-tip code{ background:rgba(255,255,255,0.06); padding:1px 5px; border-radius:3px; font-size:12px; }
+.b22-form{ display:flex; flex-direction:column; gap:8px; margin:10px 0; }
+.b22-form label{ display:flex; flex-direction:column; gap:4px; font-size:12px; color:#9bb4a8; }
+.b22-form input{ background:rgba(0,0,0,0.18); border:1px solid rgba(120,160,140,0.25); color:#e8f0eb; padding:8px 10px; border-radius:6px; font-size:13px; outline:none; }
+.b22-form input:focus{ border-color:rgba(120,200,160,0.6); }
+.b22-btns{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; align-items:center; }
+.b22-btn{ background:linear-gradient(180deg, rgba(95,170,130,0.9), rgba(60,130,90,0.9)); color:#fff; border:none; padding:8px 14px; border-radius:6px; font-size:13px; cursor:pointer; }
+.b22-btn:hover{ filter:brightness(1.08); }
+.b22-btn.b22-ghost{ background:rgba(255,255,255,0.06); border:1px solid rgba(120,160,140,0.3); }
+.b22-btn.b22-danger{ background:rgba(180,60,60,0.7); }
+.b22-toggle{ display:inline-flex; align-items:center; gap:6px; font-size:12px; color:#cfe4d8; cursor:pointer; user-select:none; }
