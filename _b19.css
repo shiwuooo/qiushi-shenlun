@@ -1,0 +1,92 @@
+/* ============ _b19 申论成长史 → Obsidian 双推 样式 ============ */
+/* 复用主站 :root 变量；全部 b19- 前缀隔离，不污染主站 */
+
+.b19-wrap{max-width:1180px;margin:0 auto;padding:4px 2px 44px;color:var(--txt)}
+
+/* ---- 头部 ---- */
+.b19-head h2{font-size:20px;margin:0 0 6px}
+.b19-lead{font-size:13px;line-height:1.95;color:var(--sub);margin:0 0 12px}
+.b19-lead b{display:inline-block;color:var(--accent);font-weight:700}
+
+/* ---- 顶部飞行提示 ---- */
+.b19-flash{max-height:0;overflow:hidden;opacity:0;transition:max-height .18s ease,opacity .18s ease,margin .18s ease;
+  border-radius:8px;font-size:13px;line-height:1.7;margin:0}
+.b19-flash.on{max-height:80px;opacity:1;margin:0 0 12px;padding:8px 12px;
+  background:var(--green-soft);border:1px solid var(--green);color:var(--green)}
+.b19-flash.on.bad{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+
+/* ---- 卡片 ---- */
+.b19-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;margin-bottom:14px}
+.b19-h3{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:14px;font-weight:700;
+  color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.b19-h3 .b19-num{display:inline-block;min-width:20px;height:20px;line-height:20px;text-align:center;
+  border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:700}
+.b19-sub{font-size:12px;font-weight:400;color:var(--sub);margin-left:auto}
+.b19-empty{color:var(--sub);font-size:13px;line-height:1.9;padding:6px 2px}
+
+/* ---- 配置区 ---- */
+.b19-grid{display:flex;flex-wrap:wrap;gap:12px}
+.b19-field{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub);flex:1 1 320px}
+.b19-field>span{white-space:nowrap}
+.b19-inp{flex:1 1 auto;min-width:120px;border:1px solid var(--line);border-radius:8px;
+  padding:6px 10px;font-size:13px;font-family:inherit;color:var(--txt);background:var(--bg);outline:none}
+.b19-inp:focus{border-color:var(--red);background:var(--panel)}
+.b19-inp:disabled{opacity:.45;cursor:not-allowed}
+.b19-days{flex:0 0 78px;min-width:78px;max-width:78px;text-align:center}
+
+.b19-hint{font-size:12px;line-height:1.9;color:var(--sub);margin:10px 0 2px;word-break:break-all}
+.b19-hint b{color:var(--blue);font-weight:700}
+
+.b19-scope{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px;
+  padding-top:12px;border-top:1px dashed var(--line)}
+.b19-lb{font-size:13px;color:var(--sub);margin-right:2px}
+.b19-lb2{font-size:12px;color:var(--sub)}
+.b19-radio{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--panel);
+  color:var(--sub);border-radius:16px;padding:4px 14px;font-size:13px;cursor:pointer;line-height:1.6}
+.b19-radio:hover{border-color:var(--red);color:var(--accent);background:var(--red-soft)}
+.b19-radio.on{border-color:var(--red);background:var(--red-soft);color:var(--accent);font-weight:700}
+.b19-radio input{margin:0;cursor:pointer}
+
+.b19-advline{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-top:12px;
+  padding-top:12px;border-top:1px dashed var(--line)}
+.b19-check{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--sub);cursor:pointer}
+.b19-check input{margin:0;cursor:pointer}
+.b19-vault{flex:0 1 300px}
+.b19-vault.off{opacity:.4}
+
+/* ---- 按钮行 ---- */
+.b19-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:14px}
+.b19-btn{border:1px solid var(--line);background:var(--panel);color:var(--txt);border-radius:8px;
+  padding:7px 16px;font-size:13px;font-family:inherit;line-height:1.6;cursor:pointer}
+.b19-btn:hover{border-color:var(--red);color:var(--accent);background:var(--red-soft)}
+.b19-btn.primary{border-color:var(--red);background:var(--red);color:#fff;font-weight:700}
+.b19-btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.b19-cnt{font-size:12px;color:var(--sub);margin-left:auto}
+
+/* ---- Markdown 预览 ---- */
+.b19-md{width:100%;box-sizing:border-box;min-height:340px;max-height:60vh;margin-top:12px;
+  border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--txt);
+  padding:12px 14px;font-size:12.5px;line-height:1.85;resize:vertical;outline:none;
+  font-family:Consolas,Menlo,Monaco,'Courier New',monospace;white-space:pre}
+.b19-md:focus{border-color:var(--blue);background:var(--panel)}
+
+/* ---- 落地指引 ---- */
+.b19-guide{background:var(--blue-soft);border-color:#c7d2fe}
+.b19-ol{margin:0;padding-left:22px;font-size:13px;line-height:2.05;color:var(--txt)}
+.b19-ol li{margin-bottom:2px}
+.b19-ol code,.b19-guide code{background:var(--panel);border:1px solid var(--line);border-radius:5px;
+  padding:1px 6px;font-size:12px;color:var(--blue);
+  font-family:Consolas,Menlo,Monaco,'Courier New',monospace;word-break:break-all}
+.b19-warn{margin-top:12px;padding:9px 12px;border-radius:8px;background:var(--panel);
+  border:1px dashed var(--line);font-size:12.5px;line-height:1.9;color:var(--sub)}
+.b19-uri{margin-top:10px;font-size:12.5px;line-height:1.9;color:var(--sub);word-break:break-all}
+.b19-link{color:var(--blue);text-decoration:none;border-bottom:1px dashed var(--blue)}
+.b19-link:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ---- 窄屏 ---- */
+@media (max-width:760px){
+  .b19-field{flex:1 1 100%}
+  .b19-cnt{margin-left:0;width:100%}
+  .b19-md{min-height:260px}
+}
