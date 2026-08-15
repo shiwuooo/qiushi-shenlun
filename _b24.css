@@ -1,0 +1,35 @@
+/* ===== 第二十四批：求是时评 (_b24.css) ===== */
+.qs-wrap{max-width:1100px;margin:0 auto}
+.qs-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px}
+.qs-badge{background:var(--red);color:#fff;font-size:12px;padding:3px 10px;border-radius:12px}
+.qs-exp{color:var(--sub);font-size:12px}
+.qs-acts{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.qs-btn{border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer}
+.qs-btn:hover{border-color:var(--red);color:var(--red)}
+.qs-btn.primary{background:var(--red);color:#fff;border-color:var(--red)}
+.qs-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.qs-filters input[type=text]{flex:1;min-width:200px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;font-size:13px;outline:none}
+.qs-filters select{padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;background:#fff}
+.qs-card{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:#fff;overflow:hidden}
+.qs-card.on{border-color:var(--red)}
+.qs-row{display:flex;gap:10px;align-items:center;padding:12px 14px;cursor:pointer}
+.qs-row:hover{background:var(--red-soft)}
+.qs-date{color:var(--sub);font-size:12px;white-space:nowrap;min-width:84px}
+.qs-tag{font-size:11px;padding:1px 7px;border-radius:10px;background:var(--blue-soft);color:var(--blue);white-space:nowrap}
+.qs-tag.src{background:#eef2f3;color:#555}
+.qs-tag.done{background:var(--green-soft);color:var(--green)}
+.qs-tag.todo{background:#fff4e5;color:#b45309}
+.qs-title{flex:1;font-size:14px;font-weight:600}
+.qs-body{padding:0 14px 14px;border-top:1px dashed var(--line);display:none}
+.qs-card.on .qs-body{display:block}
+.qs-content{white-space:pre-wrap;line-height:1.9;font-size:14px;color:#222;max-height:420px;overflow:auto;padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:10px}
+.qs-an{background:var(--red-soft);border-radius:8px;padding:12px;margin-bottom:10px}
+.qs-an h4{font-size:13px;color:var(--accent);margin:8px 0 4px}
+.qs-an h4:first-child{margin-top:0}
+.qs-an ul{margin:0;padding-left:20px}
+.qs-an li{margin:2px 0}
+.qs-an p{margin:4px 0}
+.qs-msg{position:fixed;left:50%;top:20%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:14px 20px;border-radius:10px;z-index:999;max-width:560px;box-shadow:0 6px 24px rgba(0,0,0,.25);font-size:13px;line-height:1.7}
+.qs-msg textarea{width:100%;height:120px;margin-top:8px;border:1px solid #555;border-radius:6px;background:#111;color:#eee;padding:8px;font-size:12px;font-family:monospace}
+.qs-msg .qs-msg-x{float:right;cursor:pointer;opacity:.7}
+.qs-empty{color:var(--sub);text-align:center;padding:30px}
