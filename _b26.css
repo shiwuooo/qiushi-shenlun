@@ -1,0 +1,98 @@
+/* =====================================================================
+   第26批：平板 / iPad 适配 + 底部 Tab 栏（app 手感）
+   - iPad 竖屏(~768) 与手机：隐藏左侧 nav，改用固定底部 Tab 栏 + 「更多」抽屉
+   - 字号/触控目标放大，内容居中限宽，适配刘海/Home 指示区（安全区）
+   - 桌面(>=901px)维持原侧栏，本文件不生效
+   ===================================================================== */
+
+/* ---------- 平板/手机基础排版 ---------- */
+@media (max-width: 900px){
+  body{ font-size: 16px; -webkit-text-size-adjust: 100%; }
+  header{ padding: 12px 14px; }
+  header h1{ font-size: 18px; }
+  header .meta{ display: block; }
+  .searchbar{ margin-top: 8px; }
+  #q{ font-size: 16px; padding: 11px 14px; min-width: 0; }
+  .scopes{ gap: 6px; }
+  .scopes button, .yearchips button{ font-size: 13px; padding: 6px 14px; }
+
+  .layout{ display: block; max-width: 760px; margin: 0 auto; padding: 12px 12px 88px; gap: 0; }
+  nav{ display: none !important; }
+  main{ min-width: 0; }
+  .card{ padding: 16px 16px; margin-bottom: 14px; border-radius: 12px; }
+  .themeHead{ font-size: 18px; }
+  .stem{ font-size: 15px; line-height: 1.9; }
+  .pt{ font-size: 15px; line-height: 1.8; }
+  .pt input{ width: 18px; height: 18px; margin-top: 6px; }
+  th,td{ font-size: 14px; padding: 10px 12px; }
+  .more{ font-size: 15px; padding: 10px 30px; }
+  .sk-grid{ grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+
+  /* 标注工具条在平板更友好 */
+  #annotBar{ bottom: calc(72px + env(safe-area-inset-bottom)); }
+}
+
+/* ---------- 底部 Tab 栏 ---------- */
+#tabbar{
+  display: none;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+  height: calc(56px + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -2px 12px rgba(0,0,0,.08);
+}
+#tabbar .tab{
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; font-size: 11px; color: var(--sub); cursor: pointer; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#tabbar .tab .ti{ font-size: 21px; line-height: 1; }
+#tabbar .tab.on{ color: var(--accent); font-weight: 700; }
+#tabbar .tab:active{ opacity: .6; }
+
+/* ---------- 「更多」抽屉 ---------- */
+#sheetMask{
+  display: none; position: fixed; inset: 0; z-index: 90;
+  background: rgba(0,0,0,.35);
+}
+#sheetMask.on{ display: block; }
+#sheetPanel{
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 91;
+  background: #fff; border-radius: 16px 16px 0 0;
+  padding: 10px 14px calc(14px + env(safe-area-inset-bottom));
+  transform: translateY(110%); transition: transform .25s ease;
+  max-height: 70vh; overflow: auto;
+  box-shadow: 0 -6px 24px rgba(0,0,0,.18);
+}
+#sheetPanel.on{ transform: translateY(0); }
+#sheetPanel .sheet-hd{
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; font-weight: 700; color: var(--accent); padding: 6px 4px 12px;
+}
+#sheetPanel .sheet-hd .x{ font-size: 22px; color: var(--sub); cursor: pointer; padding: 0 8px; }
+#sheetGrid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+#sheetGrid .si{
+  background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px 8px; text-align: center; font-size: 14px; color: var(--txt);
+  cursor: pointer; min-height: 48px; display: flex; align-items: center; justify-content: center;
+}
+#sheetGrid .si.on{ background: var(--red-soft); color: var(--accent); border-color: var(--red); font-weight: 700; }
+#sheetGrid .si:active{ opacity: .7; }
+
+/* 桌面隐藏移动件 */
+@media (min-width: 901px){
+  #tabbar, #sheetMask, #sheetPanel{ display: none !important; }
+}
+
+/* ---------- PWA 安装提示条 ---------- */
+#pwaTip{
+  display: none; position: fixed; left: 50%; top: 8px; transform: translateX(-50%);
+  z-index: 95; background: var(--accent); color: #fff; font-size: 13px;
+  padding: 8px 14px; border-radius: 20px; box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  max-width: 92vw; text-align: center;
+}
+#pwaTip.on{ display: block; }
+#pwaTip b{ cursor: pointer; text-decoration: underline; margin-left: 8px; }
