@@ -1,0 +1,121 @@
+/* ============ _b16 申论成长史时间线 样式 ============ */
+/* 复用主站 :root 变量；全部 b16- 前缀隔离，不污染主站 */
+
+.b16-wrap{max-width:960px;margin:0 auto;padding:4px 2px 40px}
+
+/* ---- 头部 ---- */
+.b16-head h2{font-size:20px;margin:0 0 6px}
+.b16-lead{font-size:13px;line-height:1.85;color:var(--sub);margin:0 0 12px}
+.b16-lead b{color:var(--accent)}
+
+/* ---- 通用卡片 ---- */
+.b16-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.b16-empty{color:var(--sub);font-size:13.5px;line-height:1.9;text-align:center;padding:26px 16px}
+
+/* ---- 成长概览 ---- */
+.b16-ov{margin-bottom:12px}
+.b16-ovh{font-size:14px;font-weight:700;color:var(--accent);
+  padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.b16-ovg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:10px}
+.b16-kv{background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.b16-kv span{display:block;font-size:11.5px;color:var(--sub);margin-bottom:2px}
+.b16-kv b{font-size:16px;color:var(--txt)}
+
+.b16-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+  font-size:12.5px;color:var(--sub);line-height:1.9;padding:5px 0}
+.b16-line b{color:var(--txt);font-size:14px}
+.b16-lb{flex:0 0 auto;font-size:11.5px;color:var(--sub);background:#f3f4f6;
+  border-radius:9px;padding:2px 9px;margin-right:2px}
+.b16-flat{color:var(--sub)}
+
+/* 趋势：升=红（进步），降=绿（回落）——沿用申论站配色约定 */
+.b16-trend{font-weight:700;padding:1px 9px;border-radius:10px;white-space:nowrap}
+.b16-trend.up{color:var(--red);background:var(--red-soft)}
+.b16-trend.down{color:var(--green);background:var(--green-soft)}
+.b16-trend.flat{color:var(--sub);background:#f3f4f6}
+
+/* ---- 标签 chips ---- */
+.b16-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;line-height:1.7;
+  padding:2px 10px;border-radius:11px;background:var(--blue-soft);color:#4338ca;
+  border:1px solid transparent;cursor:pointer;white-space:nowrap}
+.b16-chip:hover{border-color:var(--blue);background:#e4e9ff}
+.b16-chip.hot{background:var(--red-soft);color:var(--accent)}
+.b16-chip.hot:hover{border-color:var(--red);background:#fbe6e2}
+.b16-chip i{font-style:normal;font-size:10.5px;background:#fff;border-radius:8px;padding:0 6px;opacity:.85}
+
+/* ---- 搜索栏 ---- */
+.b16-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 6px}
+.b16-search{flex:1 1 280px;min-width:220px;border:1px solid var(--line);border-radius:18px;
+  background:var(--panel);color:var(--txt);padding:7px 14px;font-size:13px;outline:none}
+.b16-search:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.08)}
+.b16-mini{border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:14px;
+  padding:5px 12px;font-size:12px;cursor:pointer;line-height:1.6;white-space:nowrap}
+.b16-mini:hover{border-color:var(--red);color:var(--accent);background:var(--red-soft)}
+.b16-cnt{font-size:12px;color:var(--sub);margin:0 0 12px 4px}
+.b16-cnt b{color:var(--accent);font-size:13px}
+
+/* ---- 时间线主体 ---- */
+.b16-tl{position:relative;padding-left:24px}
+.b16-tl:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(to bottom,var(--line),#eceef1)}
+
+.b16-mon{position:relative;font-size:12.5px;font-weight:700;color:var(--accent);
+  margin:14px 0 8px;padding-left:2px}
+.b16-mon:first-child{margin-top:2px}
+.b16-mdot{position:absolute;left:-23px;top:3px;width:12px;height:12px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--red-soft)}
+
+.b16-item{position:relative;margin-bottom:12px}
+.b16-dot{position:absolute;left:-23px;top:18px;width:10px;height:10px;border-radius:50%;
+  background:var(--sub);border:2px solid var(--panel);box-shadow:0 0 0 2px #eceef1}
+.b16-dot.pass{background:var(--red);box-shadow:0 0 0 2px var(--red-soft)}
+.b16-dot.low{background:var(--green);box-shadow:0 0 0 2px var(--green-soft)}
+
+.b16-it{padding:12px 14px;transition:border-color .15s,box-shadow .15s}
+.b16-it:hover{border-color:#d9dce1;box-shadow:0 2px 10px rgba(31,41,55,.06)}
+
+.b16-ih{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.b16-il{min-width:0;flex:1}
+.b16-date{font-size:11.5px;color:var(--sub);margin-bottom:4px}
+.b16-tt{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--txt)}
+.b16-qn{font-size:11px;font-weight:400;padding:1px 8px;border-radius:9px;background:#f3f4f6;color:var(--sub)}
+.b16-qt{font-size:11px;font-weight:400;padding:1px 8px;border-radius:9px;background:var(--red-soft);color:var(--accent)}
+
+/* 命中率大字：≥60 红/达标，<60 绿/待提升 */
+.b16-ir{flex:0 0 auto;text-align:right;min-width:74px}
+.b16-sc{font-size:26px;font-weight:800;line-height:1.1;color:var(--sub)}
+.b16-sc i{font-style:normal;font-size:13px;font-weight:600;margin-left:1px}
+.b16-sct{font-size:11px;color:var(--sub);margin-top:2px}
+.b16-ir.pass .b16-sc{color:var(--red)}
+.b16-ir.pass .b16-sct{color:var(--red)}
+.b16-ir.low .b16-sc{color:var(--green)}
+.b16-ir.low .b16-sct{color:var(--green)}
+
+/* 过程笔记 */
+.b16-proc{margin-top:10px;padding:9px 11px;background:#fafbfc;border:1px dashed var(--line);border-radius:10px}
+.b16-tags{display:flex;flex-wrap:wrap;gap:6px}
+.b16-note{font-size:12.5px;line-height:1.85;color:var(--txt);white-space:pre-wrap;word-break:break-word;margin-top:7px}
+.b16-imgtip{font-size:11.5px;color:var(--sub);margin-top:6px}
+
+/* 操作按钮 */
+.b16-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.b16-btn{border:1px solid var(--red);background:#fff;color:var(--red);border-radius:14px;
+  padding:4px 14px;font-size:12.5px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.b16-btn:hover{background:var(--red);color:#fff}
+.b16-btn.ghost{border-color:var(--line);color:var(--sub)}
+.b16-btn.ghost:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue)}
+
+/* 加载更多 */
+.b16-morebox{text-align:center;margin-top:14px}
+.b16-more{border:1px solid var(--line);background:var(--panel);color:var(--accent);
+  border-radius:18px;padding:7px 22px;font-size:13px;cursor:pointer}
+.b16-more:hover{border-color:var(--red);background:var(--red-soft)}
+.b16-end{font-size:12px;color:var(--sub)}
+
+@media (max-width:620px){
+  .b16-tl{padding-left:20px}
+  .b16-dot,.b16-mdot{left:-19px}
+  .b16-ih{flex-direction:column;gap:6px}
+  .b16-ir{text-align:left}
+  .b16-sc{font-size:22px}
+}
