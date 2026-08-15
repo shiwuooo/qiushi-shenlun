@@ -1,0 +1,127 @@
+/* ============ _b17 单题限时模考 · 考场节奏复盘 样式 ============ */
+/* 复用主站 :root 变量；全部 b17- 前缀隔离，不污染主站 */
+
+.b17-wrap{max-width:1180px;margin:0 auto;padding:4px 2px 44px;color:var(--txt)}
+
+/* ---- 头部 / 标签页 ---- */
+.b17-head h2{font-size:20px;margin:0 0 6px}
+.b17-lead{font-size:13px;line-height:1.85;color:var(--sub);margin:0 0 12px}
+.b17-lead b{color:var(--accent)}
+.b17-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.b17-tab{border:1px solid var(--line);background:var(--panel);color:var(--sub);border-radius:16px;
+  padding:5px 16px;font-size:13px;cursor:pointer;line-height:1.6;font-family:inherit}
+.b17-tab:hover{border-color:var(--red);color:var(--accent);background:var(--red-soft)}
+.b17-tab.on{border-color:var(--red);background:var(--red);color:#fff;font-weight:700}
+
+/* ---- 卡片 ---- */
+.b17-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;margin-bottom:14px}
+.b17-h3{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:14px;font-weight:700;
+  color:var(--accent);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.b17-h3 .b17-num{display:inline-block;min-width:20px;height:20px;line-height:20px;text-align:center;
+  border-radius:50%;background:var(--red);color:#fff;font-size:12px}
+.b17-sub{font-size:12px;font-weight:400;color:var(--sub);margin-left:auto}
+.b17-empty{color:var(--sub);font-size:13px;padding:8px 2px;line-height:1.9}
+.b17-empty b{color:var(--accent)}
+.b17-label{font-size:12px;color:var(--sub);margin:12px 0 4px}
+
+/* ---- 按钮 ---- */
+.b17-btn{border:1px solid var(--red);background:var(--red);color:#fff;border-radius:16px;
+  padding:6px 18px;font-size:13px;cursor:pointer;line-height:1.6;font-family:inherit}
+.b17-btn:hover{background:var(--accent);border-color:var(--accent)}
+.b17-btn[disabled]{opacity:.45;cursor:not-allowed}
+.b17-mini{border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:14px;
+  padding:4px 12px;font-size:12px;cursor:pointer;line-height:1.6;font-family:inherit}
+.b17-mini:hover{border-color:var(--red);color:var(--accent);background:var(--red-soft)}
+.b17-mini.del:hover{border-color:#b91c1c;color:#b91c1c;background:#fef2f2}
+.b17-ops{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+.b17-tip{font-size:12px;color:var(--sub);line-height:1.7}
+.b17-tip.over{color:var(--red);font-weight:700}
+.b17-flash{font-size:12px;color:var(--green);background:var(--green-soft);
+  border:1px solid #bbe7cd;border-radius:12px;padding:3px 12px}
+
+/* ---- 选择行 ---- */
+.b17-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.b17-row.wrap{flex-wrap:wrap;align-items:flex-start}
+.b17-lbl2{font-size:12.5px;color:var(--sub);min-width:34px;padding-top:5px}
+.b17-sel{flex:1;min-width:0;max-width:520px;padding:7px 10px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;color:var(--txt);font-size:13px;font-family:inherit;outline:none}
+.b17-sel:focus{border-color:var(--red)}
+.b17-qmeta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:2px 0 12px;padding-left:44px}
+.b17-tag{display:inline-block;font-size:11.5px;padding:1px 9px;border-radius:10px;
+  background:var(--blue-soft);color:var(--blue);margin-left:8px}
+.b17-mt{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:10px;padding:1px 9px}
+.b17-mt.sug{color:var(--accent);border-color:#f0c9c2;background:var(--red-soft)}
+
+/* ---- 时长 chips ---- */
+.b17-chips{display:flex;flex-wrap:wrap;gap:6px}
+.b17-chip{border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:14px;
+  padding:3px 12px;font-size:12.5px;cursor:pointer;line-height:1.7;font-family:inherit}
+.b17-chip:hover{border-color:var(--red);background:var(--red-soft);color:var(--accent)}
+.b17-chip.on{border-color:var(--red);background:var(--red-soft);color:var(--accent);font-weight:700}
+.b17-chip.sug{background:var(--blue-soft);border-color:#dbe3ff;color:var(--blue)}
+.b17-chip.sug.on{background:var(--red-soft);border-color:var(--red);color:var(--accent)}
+.b17-custom{font-size:12.5px;color:var(--sub);padding-top:3px}
+.b17-numin{width:66px;padding:3px 8px;border:1px solid var(--line);border-radius:8px;
+  font-size:13px;font-family:inherit;color:var(--txt);outline:none}
+.b17-numin:focus{border-color:var(--red)}
+
+/* ---- 计时作答区 ---- */
+.b17-run{border-color:#f0c9c2}
+.b17-runhead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.b17-rtitle{font-size:14px;font-weight:700;color:var(--accent)}
+.b17-clock{font-size:44px;line-height:1.1;font-weight:700;letter-spacing:2px;color:var(--txt);
+  font-family:Consolas,"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums}
+.b17-clock.warn{color:#b45309}
+.b17-clock.over{color:var(--red)}
+.b17-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin:10px 0 2px}
+.b17-bar > i{display:block;height:100%;background:var(--green);transition:width .4s linear}
+.b17-bar > i.warn{background:#d97706}
+.b17-bar > i.over{background:var(--red)}
+.b17-stem{border:1px solid var(--line);border-radius:10px;background:#fcfcfd;padding:10px 12px;
+  font-size:13.5px;line-height:1.95;max-height:260px;overflow:auto}
+.b17-stem > div{margin-bottom:4px}
+.b17-text{width:100%;box-sizing:border-box;min-height:260px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:10px;font-size:14px;line-height:1.95;font-family:inherit;color:var(--txt);
+  outline:none;resize:vertical;background:#fff}
+.b17-text:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.08)}
+.b17-cnt{font-size:12px;color:var(--sub);margin-top:4px;text-align:right}
+
+/* ---- 成绩 ---- */
+.b17-res{border-color:#bbe7cd}
+.b17-resline{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px}
+.b17-big{font-size:34px;font-weight:700;color:var(--accent);line-height:1.1}
+.b17-kv{font-size:13px;color:var(--txt)}
+.b17-note{margin-top:10px;font-size:13px;line-height:1.9;color:var(--txt);
+  background:var(--green-soft);border:1px solid #bbe7cd;border-radius:10px;padding:8px 12px}
+.b17-pts{list-style:none;margin:12px 0 0;padding:0;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:6px}
+.b17-pts li{font-size:12.5px;line-height:1.8;padding:4px 10px;border-radius:8px;border:1px solid var(--line)}
+.b17-pts li.hit{background:var(--green-soft);border-color:#bbe7cd;color:var(--green)}
+.b17-pts li.miss{background:var(--red-soft);border-color:#f0c9c2;color:var(--red)}
+
+/* ---- 复盘概览 ---- */
+.b17-ov{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.b17-ovi{border:1px solid var(--line);border-radius:10px;background:#fcfcfd;padding:10px 12px;
+  display:flex;flex-direction:column;gap:4px}
+.b17-ovn{font-size:18px;font-weight:700;color:var(--txt);line-height:1.3}
+.b17-ovl{font-size:12px;color:var(--sub)}
+.b17-over{color:var(--red)}
+.b17-under{color:var(--green)}
+.b17-coach{margin-top:12px;font-size:13px;line-height:1.95;color:var(--txt);
+  background:var(--blue-soft);border:1px solid #dbe3ff;border-radius:10px;padding:9px 12px}
+
+/* ---- 复盘表格 ---- */
+.b17-tbwrap{overflow-x:auto}
+.b17-tb{width:100%;border-collapse:collapse;font-size:12.5px}
+.b17-tb th,.b17-tb td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;
+  white-space:nowrap;line-height:1.7}
+.b17-tb th{color:var(--sub);font-weight:400;background:#fafafa}
+.b17-tb td:nth-child(2){white-space:normal;min-width:180px}
+.b17-tb tr.b17-tr-over td{background:var(--red-soft)}
+
+@media(max-width:720px){
+  .b17-clock{font-size:34px}
+  .b17-qmeta{padding-left:0}
+  .b17-sel{max-width:none}
+}
