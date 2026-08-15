@@ -1,0 +1,207 @@
+/* ==================================================================
+   _b15 答题助手（规范词 / 金句 主动召回）样式
+   全部 b15- 前缀；颜色复用主站 :root 变量（带兜底值）
+   ================================================================== */
+
+/* ---------- A. 独立页面 ---------- */
+.b15-wrap{ max-width:960px; margin:0 auto; }
+
+.b15-hd{ margin:0 0 12px; }
+.b15-h1{ font-size:19px; font-weight:700; color:var(--txt,#1f2937); }
+.b15-h2{ font-size:12.5px; color:var(--sub,#6b7280); margin-top:4px; line-height:1.6; }
+
+.b15-bar{
+  background:var(--panel,#fff);
+  border:1px solid var(--line,#e5e7eb);
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:12px;
+}
+.b15-input{
+  width:100%;
+  box-sizing:border-box;
+  padding:9px 11px;
+  font-size:14px;
+  color:var(--txt,#1f2937);
+  background:var(--bg,#f6f7f9);
+  border:1px solid var(--line,#e5e7eb);
+  border-radius:8px;
+  outline:none;
+}
+.b15-input:focus{ border-color:var(--accent,#8e2f22); background:var(--panel,#fff); }
+
+.b15-chips{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.b15-chip{
+  font-size:12.5px;
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid var(--line,#e5e7eb);
+  background:var(--panel,#fff);
+  color:var(--sub,#6b7280);
+  cursor:pointer;
+  line-height:1.6;
+}
+.b15-chip:hover{ border-color:var(--accent,#8e2f22); color:var(--accent,#8e2f22); }
+.b15-chip-on{
+  background:var(--red-soft,#fdf0ee);
+  border-color:var(--accent,#8e2f22);
+  color:var(--accent,#8e2f22);
+  font-weight:600;
+}
+
+.b15-count{ font-size:12px; color:var(--sub,#6b7280); margin:0 0 8px 2px; }
+.b15-count b{ color:var(--accent,#8e2f22); }
+
+.b15-group{ margin-bottom:14px; }
+.b15-gh{ display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.b15-gn{ font-size:11.5px; color:var(--sub,#6b7280); }
+
+.b15-item{
+  background:var(--panel,#fff);
+  border:1px solid var(--line,#e5e7eb);
+  border-radius:8px;
+  padding:9px 11px;
+  margin-bottom:7px;
+}
+.b15-row{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.b15-ttl{ font-size:14px; font-weight:600; color:var(--txt,#1f2937); line-height:1.5; }
+.b15-sp{ flex:1 1 auto; }
+
+.b15-btn{
+  font-size:12px;
+  padding:3px 9px;
+  border-radius:6px;
+  border:1px solid var(--line,#e5e7eb);
+  background:var(--bg,#f6f7f9);
+  color:var(--sub,#6b7280);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.b15-btn:hover{ border-color:var(--accent,#8e2f22); color:var(--accent,#8e2f22); background:var(--red-soft,#fdf0ee); }
+
+.b15-lines{ margin-top:8px; padding-top:8px; border-top:1px dashed var(--line,#e5e7eb); }
+.b15-line{ font-size:13px; color:var(--txt,#1f2937); line-height:1.85; }
+.b15-line + .b15-line{ margin-top:2px; }
+
+.b15-empty{
+  background:var(--panel,#fff);
+  border:1px dashed var(--line,#e5e7eb);
+  border-radius:8px;
+  padding:26px 14px;
+  text-align:center;
+  font-size:13px;
+  color:var(--sub,#6b7280);
+  line-height:1.9;
+}
+.b15-empty-s{ padding:14px 10px; font-size:12.5px; }
+
+/* ---------- 库标签 ---------- */
+.b15-tag{
+  display:inline-block;
+  font-size:11.5px;
+  line-height:1.7;
+  padding:1px 8px;
+  border-radius:4px;
+  white-space:nowrap;
+  border:1px solid transparent;
+}
+.b15-t-norm{  background:var(--red-soft,#fdf0ee);   color:var(--accent,#8e2f22); border-color:#f0d6d1; }
+.b15-t-gold{  background:var(--hl,#ffe9a8);         color:#8a5a00;               border-color:#f0d68a; }
+.b15-t-case{  background:var(--blue-soft,#eef2ff);  color:var(--blue,#1d4ed8);   border-color:#d6ddf7; }
+.b15-t-frame{ background:var(--green-soft,#ecfdf5); color:var(--green,#15803d);  border-color:#cdeadb; }
+.b15-t-other{ background:var(--bg,#f6f7f9);         color:var(--sub,#6b7280);    border-color:var(--line,#e5e7eb); }
+
+/* ---------- B. 作答弹窗内召回面板 ---------- */
+.b15-recall{
+  margin-top:10px;
+  border:1px solid var(--line,#e5e7eb);
+  border-radius:8px;
+  background:var(--bg,#f6f7f9);
+  padding:8px 9px;
+}
+.b15-recall:empty{ display:none; }
+
+.b15-tip{
+  font-size:12px;
+  color:var(--accent,#8e2f22);
+  background:var(--red-soft,#fdf0ee);
+  border:1px solid #f0d6d1;
+  border-radius:6px;
+  padding:5px 9px;
+  line-height:1.7;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.b15-qt{
+  font-size:11.5px;
+  color:var(--sub,#6b7280);
+  background:var(--panel,#fff);
+  border:1px solid var(--line,#e5e7eb);
+  border-radius:4px;
+  padding:0 6px;
+}
+.b15-note{ font-size:11.5px; color:var(--sub,#6b7280); margin:6px 2px 0; }
+
+.b15-scroll{
+  max-height:230px;
+  overflow-y:auto;
+  margin-top:7px;
+  padding-right:2px;
+}
+.b15-scroll::-webkit-scrollbar{ width:6px; }
+.b15-scroll::-webkit-scrollbar-thumb{ background:#d7dae0; border-radius:3px; }
+
+.b15-rg + .b15-rg{ margin-top:9px; }
+.b15-rg-h{ display:flex; align-items:center; gap:6px; margin-bottom:5px; }
+.b15-cards{ display:flex; flex-wrap:wrap; gap:6px; }
+
+.b15-card{
+  flex:1 1 210px;
+  min-width:190px;
+  background:var(--panel,#fff);
+  border:1px solid var(--line,#e5e7eb);
+  border-radius:6px;
+  padding:6px 8px;
+}
+.b15-card:hover{ border-color:var(--accent,#8e2f22); }
+.b15-card-t{ font-size:12.5px; font-weight:600; color:var(--txt,#1f2937); line-height:1.6; }
+.b15-card-s{ font-size:11.5px; color:var(--sub,#6b7280); line-height:1.6; margin-top:2px; }
+.b15-card-a{ display:flex; gap:5px; margin-top:5px; }
+
+.b15-mini{
+  font-size:11.5px;
+  padding:2px 8px;
+  border-radius:5px;
+  border:1px solid var(--line,#e5e7eb);
+  background:var(--bg,#f6f7f9);
+  color:var(--sub,#6b7280);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.b15-mini:hover{ background:var(--red-soft,#fdf0ee); color:var(--accent,#8e2f22); border-color:var(--accent,#8e2f22); }
+.b15-ins:hover{ background:var(--green-soft,#ecfdf5); color:var(--green,#15803d); border-color:var(--green,#15803d); }
+
+/* ---------- 轻提示 toast ---------- */
+.b15-toast{
+  position:fixed;
+  left:50%;
+  bottom:38px;
+  transform:translateX(-50%) translateY(10px);
+  background:rgba(31,41,55,.92);
+  color:#fff;
+  font-size:12.5px;
+  padding:6px 14px;
+  border-radius:999px;
+  z-index:99999;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+}
+.b15-toast-on{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+@media (max-width:640px){
+  .b15-card{ flex:1 1 100%; }
+  .b15-scroll{ max-height:190px; }
+}
