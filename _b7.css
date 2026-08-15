@@ -1,0 +1,129 @@
+/* =====================================================================
+   第七批：AI 三视角教练 样式  (_b7.css)
+   复用主站 :root 变量（--bg/--panel/--line/--txt/--sub/--red/--red-soft/
+   --accent/--hl/--blue/--blue-soft/--green/--green-soft）
+   全部类名以 b7- 前缀，避免与主站 / 其他模块冲突
+   配色惯例：得分率 高=红(--red) / 低=绿(--green)
+   ===================================================================== */
+
+.b7-wrap{max-width:960px}
+.b7-h1{font-size:20px;color:var(--accent);margin:4px 0 10px;font-weight:800}
+.b7-note{background:var(--blue-soft);border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:8px;padding:10px 14px;font-size:13px;color:var(--txt);line-height:1.8;margin-bottom:14px}
+.b7-note code{background:#fff;border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:12px;color:var(--accent)}
+.b7-note .b7-nocfg{color:var(--red);font-weight:700}
+
+/* ---------------- 卡片 ---------------- */
+.b7-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.b7-cardh{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:12px;
+  padding-left:10px;border-left:4px solid var(--red)}
+.b7-cardh .b7-sub{display:block;font-size:12px;font-weight:400;color:var(--sub);margin-top:3px;padding-left:0}
+.b7-subh{font-size:13px;font-weight:700;color:var(--txt);margin:14px 0 8px}
+
+/* ---------------- 表单 ---------------- */
+.b7-form{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.b7-fl{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--sub)}
+.b7-in,.b7-sel{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;
+  background:#fff;color:var(--txt);font-family:inherit;outline:none}
+.b7-in{flex:1;min-width:220px}
+.b7-in:focus,.b7-sel:focus{border-color:var(--blue)}
+.b7-selwide{flex:1;min-width:280px}
+
+/* ---------------- 按钮 ---------------- */
+.b7-btn{border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:8px;
+  padding:8px 16px;font-size:13px;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap}
+.b7-btn:hover{background:var(--red-soft);border-color:var(--red)}
+.b7-btn:disabled{opacity:.55;cursor:not-allowed}
+.b7-btn.b7-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.b7-btn.b7-primary:hover{background:var(--red)}
+.b7-btn.b7-danger{color:var(--red);border-color:#f0c9c3}
+.b7-btn.b7-danger:hover{background:var(--red-soft)}
+.b7-btn.b7-mini{padding:4px 10px;font-size:12px}
+.b7-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+/* ---------------- 状态框 ---------------- */
+.b7-box{margin-top:6px}
+.b7-hint{color:var(--sub);font-size:13px;padding:14px;background:var(--bg);border-radius:8px;text-align:center}
+.b7-loading{color:var(--blue);font-size:14px;padding:20px;text-align:center;background:var(--blue-soft);border-radius:8px}
+.b7-setup{background:var(--hl);border:1px dashed #e0b64a;border-radius:8px;padding:14px;font-size:13px;color:#7a5b00}
+.b7-setup .b7-btn{margin:0 8px}
+.b7-err{background:var(--red-soft);border:1px solid #f0c9c3;border-radius:8px;padding:14px;color:var(--red);font-size:13px;line-height:1.8}
+.b7-errhint{color:var(--sub);font-size:12px;margin-top:6px;line-height:1.8}
+.b7-warn{background:var(--hl);border-radius:8px;padding:12px;font-size:13px;color:#7a5b00}
+
+/* ---------------- 生成题卡 / 讲解 ---------------- */
+.b7-qcard{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--bg)}
+.b7-qmeta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.b7-qlab{font-size:12px;font-weight:700;color:var(--accent);margin:10px 0 4px}
+.b7-qstem{font-size:14px;line-height:1.9;color:var(--txt);background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.b7-points{margin:0;padding-left:24px}
+.b7-points li{font-size:13px;line-height:1.9;color:var(--txt);margin:2px 0}
+.b7-answer{font-size:13px;line-height:1.9;color:var(--txt);background:var(--green-soft);border:1px solid #bfe6cf;
+  border-radius:8px;padding:10px 12px;margin-top:6px}
+.b7-body{font-size:14px;line-height:1.95;color:var(--txt)}
+.b7-explhead,.b7-planhead{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.b7-explhead{padding-bottom:8px;border-bottom:1px solid var(--line)}
+.b7-planhead .b7-sub{font-weight:400;font-size:12px;color:var(--sub)}
+
+.b7-det{margin-top:8px}
+.b7-det>summary{cursor:pointer;font-size:12px;color:var(--blue);font-weight:600;user-select:none;padding:4px 0}
+
+/* ---------------- 配置弹窗 ---------------- */
+.b7-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px}
+.b7-modal{background:var(--panel);border:1px solid var(--line);border-radius:14px;width:100%;max-width:520px;box-shadow:0 12px 40px rgba(0,0,0,.15);overflow:hidden}
+.b7-modalh{font-size:16px;font-weight:700;color:#fff;background:var(--accent);padding:14px 18px}
+.b7-modalbody{padding:18px;display:flex;flex-direction:column;gap:10px}
+.b7-modal-lbl{font-size:13px;color:var(--sub);font-weight:600;margin-top:4px}
+.b7-cfghint{font-size:12px;color:var(--blue);background:var(--blue-soft);border-radius:8px;padding:10px 12px;line-height:1.7}
+.b7-modalft{display:flex;gap:10px;justify-content:flex-end;padding:12px 18px 18px}
+
+/* ---------------- 我的 AI 题库清单 ---------------- */
+.b7-list{display:flex;flex-direction:column;gap:8px}
+.b7-item{border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden}
+.b7-item>summary{cursor:pointer;padding:10px 12px;font-size:13px;user-select:none;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.b7-item>summary:hover{background:var(--red-soft)}
+.b7-itsum{color:var(--txt);flex:1;min-width:120px}
+.b7-itts{color:var(--sub);font-size:11px}
+.b7-itbody{padding:0 12px 12px;border-top:1px solid var(--line)}
+
+/* ---------------- 标签 ---------------- */
+.b7-tag{font-size:11px;padding:1px 8px;border-radius:10px;white-space:nowrap;
+  background:var(--red-soft);color:var(--accent)}
+.b7-tag.ty{background:var(--blue-soft);color:var(--blue)}
+.b7-tag.th{background:var(--green-soft);color:var(--green)}
+
+/* ---------------- 学情派单 ---------------- */
+.b7-weak{font-size:13px;color:var(--txt);line-height:2;margin-bottom:8px}
+.b7-wtag{display:inline-flex;align-items:baseline;gap:4px;padding:3px 10px;border-radius:12px;
+  margin:0 6px 4px 0;font-size:12px;background:var(--bg);border:1px solid var(--line)}
+.b7-wtag b{font-size:14px}
+.b7-wtag i{font-style:normal;color:var(--sub);font-size:11px}
+.b7-wtag.up{background:var(--red-soft);border-color:#f0c9c3}
+.b7-wtag.up b{color:var(--red)}
+.b7-wtag.down{background:var(--green-soft);border-color:#bfe6cf}
+.b7-wtag.down b{color:var(--green)}
+.b7-wmore{color:var(--sub);font-size:11px}
+.b7-wreasons{font-size:12px;color:var(--sub);margin-bottom:6px}
+.b7-rtag{display:inline-block;background:var(--hl);color:#7a5b00;border-radius:10px;padding:1px 8px;margin:0 5px 4px 0}
+
+.b7-plan{display:flex;flex-direction:column;gap:8px}
+.b7-day{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;cursor:pointer;font-size:13px;line-height:1.7}
+.b7-day:hover{background:var(--blue-soft)}
+.b7-day input{margin-top:3px;flex-shrink:0}
+.b7-day.done{background:var(--green-soft);border-color:#bfe6cf}
+.b7-day.done .b7-dtitle{text-decoration:line-through;color:var(--sub)}
+.b7-dtitle{font-weight:600;color:var(--txt)}
+.b7-ddetail{color:var(--sub);display:block;font-size:12px;margin-top:2px}
+
+/* ---------------- toast ---------------- */
+.b7-flash{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:9999;
+  background:rgba(31,41,55,.94);color:#fff;padding:10px 20px;border-radius:22px;font-size:13px;
+  opacity:0;transition:opacity .3s;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+
+@media (max-width:640px){
+  .b7-form{flex-direction:column;align-items:stretch}
+  .b7-in,.b7-sel,.b7-selwide{min-width:0;width:100%}
+}
