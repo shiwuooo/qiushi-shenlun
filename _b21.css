@@ -1,0 +1,27 @@
+/* 第21批：存档同步 (_b21.css) — 复用主站 :root 变量 */
+.b21-wrap{max-width:920px;margin:0 auto;padding:8px 4px 40px;}
+.b21-h2{font-size:19px;font-weight:700;color:var(--accent,#8e2f22);margin:6px 0 14px;}
+.b21-sub{font-size:12px;font-weight:400;color:var(--sub,#6b7280);margin-left:8px;}
+.b21-card{background:var(--panel,#fff);border:1px solid var(--line,#e5e7eb);border-radius:12px;padding:16px 18px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.b21-h3{font-size:15px;font-weight:700;color:var(--txt,#1f2937);margin:0 0 12px;}
+.b21-row{display:flex;gap:12px;align-items:baseline;padding:4px 0;font-size:14px;}
+.b21-k{color:var(--sub,#6b7280);min-width:84px;flex:none;}
+.b21-v{color:var(--txt,#1f2937);}
+.b21-v b{color:var(--accent,#8e2f22);}
+.b21-on{color:var(--green,#15803d);font-weight:600;}
+.b21-off{color:var(--sub,#6b7280);}
+.b21-tip{font-size:12px;line-height:1.7;color:var(--sub,#6b7280);background:var(--blue-soft,#eef2ff);border-left:3px solid var(--blue,#1d4ed8);padding:8px 12px;border-radius:6px;margin-top:12px;}
+.b21-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;}
+.b21-btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent,#8e2f22);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:14px;cursor:pointer;transition:opacity .15s;}
+.b21-btn:hover{opacity:.9;}
+.b21-btn.b21-ghost{background:#fff;color:var(--accent,#8e2f22);border:1px solid var(--line,#e5e7eb);}
+.b21-btn.b21-file{position:relative;overflow:hidden;}
+.b21-btn.b21-file input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
+.b21-confirm{margin-top:14px;background:var(--green-soft,#ecfdf5);border:1px solid #bbf7d0;border-radius:10px;padding:14px 16px;}
+.b21-crow{font-size:14px;color:var(--txt,#1f2937);padding:3px 0;}
+.b21-crow b{color:var(--green,#15803d);}
+.b21-crow.b21-ok{color:var(--green,#15803d);font-size:12px;}
+.b21-crow code,.b21-confirm code{background:#fff;padding:1px 6px;border-radius:4px;border:1px solid var(--line,#e5e7eb);font-size:12px;}
+.b21-usage ul{margin:6px 0 0;padding-left:20px;}
+.b21-usage li{font-size:13px;line-height:1.9;color:var(--txt,#1f2937);}
+.b21-usage li b{color:var(--accent,#8e2f22);}
