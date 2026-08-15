@@ -1,0 +1,101 @@
+/* ============ _b11 采分点自标校准 样式 ============ */
+/* 复用主站 :root 变量；全部 b11- 前缀隔离，不污染主站 */
+
+.b11-wrap{max-width:1000px;margin:0 auto;padding:4px 2px 40px}
+.b11-head h2{font-size:20px;margin:0 0 6px}
+.b11-lead{font-size:13px;line-height:1.8;color:var(--sub);margin:0 0 14px}
+.b11-lead b{color:var(--accent)}
+
+.b11-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.b11-h3{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:10px}
+.b11-sub{color:var(--sub);font-size:12px}
+.b11-empty{color:var(--sub);font-size:13px;padding:10px 0;line-height:1.8}
+
+/* ---- 选题 ---- */
+.b11-pick{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.b11-lb{font-size:12.5px;color:var(--sub)}
+.b11-sel{flex:1;min-width:200px;max-width:420px;padding:7px 10px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;color:var(--txt);font-size:13px;outline:none;cursor:pointer}
+.b11-sel:focus{border-color:var(--red)}
+
+/* ---- 题干 / 材料 ---- */
+.b11-qmeta{font-size:12.5px;color:var(--sub);margin-bottom:8px}
+.b11-qmeta b{color:var(--accent)}
+.b11-stem{font-size:13.5px;line-height:1.85;background:var(--red-soft);border-left:4px solid var(--red);
+  border-radius:6px;padding:9px 12px}
+.b11-stem div{padding:2px 0}
+.b11-mat{margin-top:10px;max-height:300px;overflow:auto;font-size:13px;line-height:1.85;
+  background:#fbfbfc;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.b11-mat div{padding:3px 0;border-bottom:1px dashed #f0f0f0}
+.b11-mat div:last-child{border-bottom:none}
+
+/* ---- 自标输入 ---- */
+.b11-warn{background:var(--hl);border-radius:6px;padding:7px 10px;font-size:12.5px;line-height:1.7;margin-bottom:10px}
+.b11-rows{display:flex;flex-direction:column;gap:8px}
+.b11-row{display:flex;align-items:flex-start;gap:8px}
+.b11-no{flex:none;width:22px;height:22px;line-height:22px;text-align:center;margin-top:6px;
+  background:var(--blue-soft);color:var(--blue);border-radius:50%;font-size:12px;font-weight:700}
+.b11-ta{flex:1;min-width:0;padding:7px 10px;border:1px solid var(--line);border-radius:8px;
+  font:13px/1.7 "Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:var(--txt);
+  resize:vertical;outline:none;background:#fff}
+.b11-ta:focus{border-color:var(--blue);background:#fcfdff}
+.b11-x{flex:none;width:26px;height:26px;margin-top:5px;border:1px solid var(--line);background:#fff;
+  border-radius:6px;color:var(--sub);font-size:15px;line-height:1;cursor:pointer}
+.b11-x:hover{border-color:var(--red);color:var(--red);background:var(--red-soft)}
+.b11-x.sm{width:20px;height:20px;margin:0 0 0 auto;font-size:13px}
+
+/* ---- 按钮 ---- */
+.b11-acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+.b11-btn{border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:18px;
+  padding:6px 14px;font-size:12.5px;cursor:pointer}
+.b11-btn:hover{border-color:var(--red);color:var(--accent);background:var(--red-soft)}
+.b11-btn.primary{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
+.b11-btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.b11-btn.ghost{color:var(--sub)}
+.b11-btn.sm{padding:3px 10px;font-size:12px;margin-left:8px}
+
+/* ---- 结果 ---- */
+.b11-score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.b11-score b{font-size:22px}
+.b11-score b.ok,.b11-hih b.ok{color:var(--green)}
+.b11-score b.mid,.b11-hih b.mid{color:#b45309}
+.b11-score b.bad,.b11-hih b.bad{color:var(--red)}
+.b11-track{height:8px;background:#f0f1f3;border-radius:5px;overflow:hidden;margin:9px 0 14px}
+.b11-track i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--accent));border-radius:5px}
+
+.b11-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.b11-col{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fcfcfd}
+.b11-col.ok{background:var(--green-soft);border-color:#c7ead6}
+.b11-col.bad{background:var(--red-soft);border-color:#f3d6d0}
+.b11-col.warn{background:var(--blue-soft);border-color:#dde3fb}
+.b11-colh{font-size:13px;font-weight:700;margin-bottom:8px}
+.b11-item{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 9px;margin-bottom:7px}
+.b11-item:last-child{margin-bottom:0}
+.b11-std{font-size:13px;line-height:1.75}
+.b11-mine{font-size:12.5px;line-height:1.7;color:var(--sub);margin-top:4px;
+  border-top:1px dashed var(--line);padding-top:4px}
+.b11-col.warn .b11-mine{margin-top:0;border-top:none;padding-top:0;color:var(--txt)}
+.b11-tag{display:inline-block;font-size:11px;padding:1px 7px;margin-right:6px;border-radius:10px;
+  background:var(--red-soft);color:var(--accent);white-space:nowrap}
+.b11-tag.core{background:var(--red-soft);color:var(--accent)}
+.b11-tag.flex{background:var(--blue-soft);color:var(--blue)}
+.b11-tag.fmt{background:var(--green-soft);color:var(--green)}
+
+.b11-tip{margin-top:14px;background:var(--blue-soft);border-left:4px solid var(--blue);
+  border-radius:6px;padding:9px 12px;font-size:12.5px;line-height:1.85}
+.b11-tip b{display:block;color:var(--blue);margin-bottom:3px}
+
+/* ---- 历史 ---- */
+.b11-stat{font-size:12.5px;color:var(--sub);margin-bottom:10px}
+.b11-stat b{color:var(--accent);font-size:14px}
+.b11-his{display:flex;flex-direction:column;gap:8px}
+.b11-hi{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:#fcfcfd}
+.b11-hih{display:flex;align-items:center;gap:8px;font-size:12.5px;flex-wrap:wrap}
+.b11-hih b{font-size:13.5px}
+.b11-hib{font-size:12px;color:var(--sub);line-height:1.7;margin-top:5px;
+  border-top:1px dashed var(--line);padding-top:5px;word-break:break-all}
+
+@media(max-width:900px){
+  .b11-cols{grid-template-columns:1fr}
+  .b11-sel{max-width:none}
+}
