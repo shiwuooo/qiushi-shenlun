@@ -1,0 +1,84 @@
+/* ============ _b10 过程教练 样式 ============ */
+/* 复用主站 :root 变量；全部 b10- 前缀隔离，不污染主站 */
+.b10-wrap{max-width:980px;margin:0 auto;padding:18px 16px 40px}
+.b10-wrap h2{font-size:20px;margin:0 0 14px}
+.b10-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.b10-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.b10-h2{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:10px}
+.b10-tip{margin-top:10px;background:var(--red-soft);border-left:4px solid var(--red);border-radius:6px;padding:8px 10px;font-size:12.5px;line-height:1.7}
+.b10-exam{background:var(--blue-soft);border-left:4px solid var(--blue);border-radius:6px;padding:8px 10px;font-size:12.5px;margin-bottom:10px}
+
+/* 过程难点频次条 */
+.b10-bar{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:12.5px}
+.b10-name{width:96px;flex:none;color:var(--txt)}
+.b10-track{flex:1;height:12px;background:#f0f1f3;border-radius:6px;overflow:hidden}
+.b10-fill{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--accent));border-radius:6px}
+.b10-cnt{width:46px;flex:none;text-align:right;color:var(--sub)}
+
+/* 教练话术卡 */
+.b10-coach{font-size:13px;line-height:1.8}
+.b10-coach-h{font-size:14px;margin-bottom:8px}
+.b10-sec{margin:6px 0}
+.b10-fix{margin:4px 0 4px 18px;padding:0}
+.b10-fix li{margin:3px 0}
+.b10-goblock{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.b10-go{border:1px solid var(--line);background:#fff;border-radius:18px;padding:5px 12px;font:12.5px/1 var(--sans);cursor:pointer;color:var(--accent)}
+.b10-go:hover{background:var(--red-soft);border-color:var(--red)}
+
+/* 反思列表 */
+.b10-notes{display:flex;flex-direction:column;gap:10px}
+.b10-note-item{border:1px solid var(--line);border-radius:8px;padding:9px 11px;background:#fcfcfd}
+.b10-note-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
+.b10-note-text{font-size:13px;line-height:1.7;color:var(--txt)}
+.b10-note-meta{font-size:11.5px;margin-top:4px}
+
+/* 微计划 */
+.b10-plan-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.b10-plan-row:last-child{border-bottom:none}
+.b10-plan-no{width:22px;height:22px;flex:none;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.b10-plan-row b{color:var(--txt)}
+.b10-plan-body{flex:1;min-width:0;font-size:13px;line-height:1.6}
+.b10-plan-done{flex:none;align-self:center;border:1px solid var(--green);background:var(--green-soft);color:var(--green);
+  border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer}
+.b10-plan-done:hover{background:var(--green);color:#fff}
+.b10-plan-ok{flex:none;align-self:center;font-size:12px;color:var(--green);background:var(--green-soft);
+  border:1px solid var(--green);border-radius:8px;padding:5px 10px}
+
+/* 作答弹窗内的过程笔记控件 */
+.b10-chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 8px}
+.b10-chip{display:inline-block;border:1px solid var(--line);background:#fff;color:var(--sub);
+  border-radius:16px;padding:4px 11px;font-size:12px;cursor:pointer;user-select:none;transition:.15s}
+.b10-chip:hover{border-color:var(--red);color:var(--red)}
+.b10-chip.on{background:var(--red-soft);border-color:var(--red);color:var(--red);font-weight:600}
+.b10-chips-static{pointer-events:none;margin:4px 0}
+.ans-note{width:calc(100% - 2px);min-height:60px;border:1px solid var(--line);border-radius:8px;
+  padding:8px 10px;font:13px/1.6 var(--sans);resize:vertical;background:#fffdf3;margin:2px 0 4px}
+.ans-note:focus{outline:none;border-color:var(--red)}
+
+/* 报告页里的过程笔记块 */
+.rep-proc{background:#fffdf3;border:1px solid #f0e6c8;border-left:4px solid var(--accent);
+  border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13px;line-height:1.7}
+.rep-proc b{color:var(--accent)}
+.rep-note{margin-top:6px;font-size:12.5px;line-height:1.75;color:var(--txt);white-space:pre-wrap}
+
+@media (max-width:720px){
+  .b10-grid{grid-template-columns:1fr}
+  .b10-name{width:80px}
+}
+
+/* ============ 多模态提交控件 ============ */
+.ans-up{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 2px}
+.ans-upbtn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 12px;font-size:12.5px;cursor:pointer;color:var(--accent)}
+.ans-upbtn:hover{background:var(--red-soft);border-color:var(--red)}
+.ans-uphint{font-size:11.5px;color:var(--sub)}
+.ans-imgprev{margin:4px 0}
+.ans-thumb{position:relative;display:inline-block;max-width:200px;border:1px solid var(--line);border-radius:8px;padding:4px;background:#fff}
+.ans-thumb img{max-width:190px;max-height:140px;display:block;border-radius:4px}
+.ans-thumbx{position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;border:none;background:var(--red);color:#fff;cursor:pointer;font-size:11px;line-height:20px}
+.rep-img{margin:6px 0}
+.rep-img img{max-width:240px;max-height:160px;border:1px solid var(--line);border-radius:6px;display:block}
+.rep-img .muted{font-size:11.5px;display:block;margin-bottom:3px}
+.rep-mat{margin:6px 0}
+.rep-mat img{max-width:100%;border:1px solid var(--line);border-radius:6px;background:#fff}
+.rep-mat .muted{font-size:11.5px;display:block;margin-bottom:3px}
+.rep-coachlink{margin-top:8px;font-size:12.5px;color:var(--accent);font-weight:600}
