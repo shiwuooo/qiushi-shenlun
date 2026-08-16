@@ -31,6 +31,11 @@ header .meta{font-size:12px;opacity:.85}
 .scopes button.on{background:#fff;color:var(--accent);font-weight:700;border-color:#fff}
 .scopes button.moreBtn{background:#fff;color:var(--accent);font-weight:700;border-color:#fff}
 .morePanel{display:flex;flex-wrap:wrap;gap:4px;width:100%;margin-top:6px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.5)}
+.scopes button.trashBtn{background:rgba(255,120,120,.18);border-color:rgba(255,120,120,.6);color:#ffd9d9}
+.scopes button.trashBtn.open{background:rgba(255,120,120,.34)}
+.trashPanel{background:rgba(70,20,20,.30);border-top-color:rgba(255,120,120,.5)}
+.scopes button.hideTrashBtn{font-size:11px;color:#ffbcbc;border:1px dashed rgba(255,120,120,.6);background:transparent;margin:6px 0 2px;padding:4px 8px;border-radius:10px;cursor:pointer;width:100%}
+.scopes button.showTrashBtn{font-size:11px;color:#ffd9d9;border:1px dashed rgba(255,120,120,.5);background:transparent;margin:4px 0 0;padding:3px 8px;border-radius:10px;cursor:pointer}
 .toprow{display:flex;align-items:center;gap:10px}
 #collapseTop{margin-left:auto;font-size:12px;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:4px 12px;cursor:pointer}
 header.collapsed #searchbar{display:none}
@@ -2915,7 +2920,7 @@ body.annot #annotBar{display:flex}
 <script>
 var DATA=null;
 window.QS_ARTICLES=window.QS_ARTICLES||[];
-const SCOPES=["真题库","省考库","小题批改","材料训练","采分自标","规范词库","同类薄弱","答案对照","文字自检","错题本","求是时评","全部","金句库","框架库","案例库","作文速构","方法论","题源对照","单题限时","热点专题","AI教练","搜题","过程教练","答题助手","存档同步","GitHub 同步"];
+const SCOPES=["真题库","省考库","小题批改","材料训练","采分自标","规范词库","同类薄弱","答案对照","文字自检","错题本","求是时评","全部","金句库","框架库","案例库","作文速构","方法论","题源对照","单题限时","热点专题","AI教练","搜题","过程教练","答题助手","存档同步","GitHub 同步","热点押题","智能组卷","限时模考","题型专攻","错词规范","框架卡","文章清单","修订史","成长史","我的学情","激励坚持","成长双推","晨读打卡","背诵卡","大作文"];
 let state={scope:"全部",year:"全部",theme:"",paper:"",srcTheme:"",q:"",limit:120,prov:""};
 
 var themeOrder=[];
@@ -2953,20 +2958,35 @@ function init(){
     `${DATA.entries.length} 素材小节 · ${DATA.articles.length} 篇文章 · ${(DATA.qsArticles||[]).length} 篇求是时评 · ${DATA.papers.length+_skn} 套真题(国考${DATA.papers.filter(p=>p.province==="国考").length}+省考${DATA.papers.filter(p=>p.province!=="国考").length+_skn}) · ${DATA.methods.length} 张方法论卡 · ${DATA.hotspots.length} 个热点 · 构建于 ${DATA.built}`;
   const sc=document.getElementById('scopes');
   const CORE_SCOPES=["真题库","省考库","小题批改","材料训练","采分自标","规范词库","同类薄弱","答案对照","文字自检","错题本","求是时评"];
-  const MORE_SCOPES=SCOPES.filter(s=>!CORE_SCOPES.includes(s));
+  const TRASH_SCOPES=["热点押题","智能组卷","限时模考","题型专攻","错词规范","框架卡","文章清单","修订史","成长史","我的学情","激励坚持","成长双推","晨读打卡","背诵卡","大作文"];
+  const MORE_SCOPES=SCOPES.filter(s=>!CORE_SCOPES.includes(s)&&!TRASH_SCOPES.includes(s));
   function makeScopeBtn(s){const b=document.createElement('button');b.textContent=s;b.classList.toggle('core',CORE_SCOPES.includes(s));
-    b.onclick=()=>{state.scope=s;state.theme="";state.paper="";state.srcTheme="";state.year="全部";state.prov="";state.limit=120;render();
-      if(!CORE_SCOPES.includes(s)){const p=document.getElementById('morePanel');if(!p){const mb=sc.querySelector('.moreBtn');if(mb)mb.click();}}};
+    b.onclick=()=>{state.scope=s;state.theme="";state.paper="";state.srcTheme="";state.year="全部";state.prov="";state.limit=120;render();};
     return b;}
   CORE_SCOPES.forEach(s=>sc.appendChild(makeScopeBtn(s)));
+  const trashHidden=(()=>{try{return localStorage.getItem('qs_trash_hidden')==='1';}catch(e){return false;}})();
   if(MORE_SCOPES.length){
     const moreBtn=document.createElement('button');moreBtn.textContent="更多 ▾";moreBtn.className="moreBtn";
     moreBtn.onclick=()=>{const p=document.getElementById('morePanel');
       if(p){p.remove();moreBtn.textContent="更多 ▾";moreBtn.classList.remove('open');}
       else{const mp=document.createElement('div');mp.id="morePanel";mp.className="morePanel";
         MORE_SCOPES.forEach(s=>mp.appendChild(makeScopeBtn(s)));
+        if(trashHidden){const st=document.createElement('button');st.textContent="显示待删除分类";st.className="showTrashBtn";
+          st.onclick=()=>{try{localStorage.removeItem('qs_trash_hidden');}catch(e){}location.reload();};mp.appendChild(st);}
         sc.appendChild(mp);moreBtn.textContent="更多 ▴";moreBtn.classList.add('open');}};
     sc.appendChild(moreBtn);
+  }
+  if(TRASH_SCOPES.length && !trashHidden){
+    const trashBtn=document.createElement('button');trashBtn.textContent="⚠ 待删除 ▾";trashBtn.className="moreBtn trashBtn";
+    trashBtn.onclick=()=>{const p=document.getElementById('trashPanel');
+      if(p){p.remove();trashBtn.textContent="⚠ 待删除 ▾";trashBtn.classList.remove('open');}
+      else{const tp=document.createElement('div');tp.id="trashPanel";tp.className="morePanel trashPanel";
+        TRASH_SCOPES.forEach(s=>{const b=makeScopeBtn(s);b.classList.add('trashItem');tp.appendChild(b);});
+        const hide=document.createElement('button');hide.textContent="🙈 彻底隐藏此分类";hide.className="hideTrashBtn";
+        hide.onclick=()=>{try{localStorage.setItem('qs_trash_hidden','1');}catch(e){}location.reload();};
+        tp.appendChild(hide);
+        sc.appendChild(tp);trashBtn.textContent="⚠ 待删除 ▴";trashBtn.classList.add('open');}};
+    sc.appendChild(trashBtn);
   }
   let timer;document.getElementById('q').addEventListener('input',e=>{
     clearTimeout(timer);timer=setTimeout(()=>{state.q=e.target.value.trim();state.limit=120;render();},200);});
@@ -3005,7 +3025,10 @@ function render(){
              "AI教练":"renderAICoach","搜题":"renderSearch","过程教练":"renderCoach",
              "答题助手":"renderRecall","存档同步":"renderArchive","GitHub 同步":"renderGithubSync",
              "答案对照":"renderCompare","小题批改":"renderXiaotiPiGai","求是时评":"renderQsReviews",
-             "文字自检":"renderProof","材料训练":"renderMatTrain","采分自标":"renderSelfCal","同类薄弱":"renderWeakAgg"};
+             "文字自检":"renderProof","材料训练":"renderMatTrain","采分自标":"renderSelfCal","同类薄弱":"renderWeakAgg",
+             "智能组卷":"renderGenPaper","题型专攻":"renderDrill","错词规范":"renderErrMark","框架卡":"renderFrames",
+             "修订史":"renderRevisions","成长史":"renderGrowth","激励坚持":"renderMotivation","成长双推":"renderGrowthPush",
+             "晨读打卡":"renderMorning","背诵卡":"renderRecite","大作文":"renderEssay"};
   if(EXT[state.scope]){
     const fn=window[EXT[state.scope]];
     if(typeof fn==="function"){ try{ fn(); }catch(err){
