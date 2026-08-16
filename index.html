@@ -27,6 +27,13 @@ header .meta{font-size:12px;opacity:.85}
 #q{flex:1;min-width:260px;max-width:560px;padding:9px 14px;border:none;border-radius:8px;font-size:14px;outline:none}
 .scopes{display:flex;gap:4px;flex-wrap:wrap}
 .scopes button,.yearchips button{border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer}
+.scopes button.core{border-color:#fff;background:rgba(255,255,255,.20);font-weight:700}
+.scopes button.on{background:#fff;color:var(--accent);font-weight:700;border-color:#fff}
+.scopes button.moreBtn{background:#fff;color:var(--accent);font-weight:700;border-color:#fff}
+.morePanel{display:flex;flex-wrap:wrap;gap:4px;width:100%;margin-top:6px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.5)}
+.toprow{display:flex;align-items:center;gap:10px}
+#collapseTop{margin-left:auto;font-size:12px;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:4px 12px;cursor:pointer}
+header.collapsed #searchbar{display:none}
 .scopes button.on,.yearchips button.on{background:#fff;color:var(--red);font-weight:700;border-color:#fff}
 .layout{display:flex;max-width:1400px;margin:0 auto;gap:16px;padding:16px 22px}
 nav{width:250px;flex-shrink:0;position:sticky;top:118px;align-self:flex-start;max-height:calc(100vh - 135px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
@@ -2870,8 +2877,11 @@ body.annot #annotBar{display:flex}
 </head>
 <body>
 <header>
-  <h1>📚 求是申论素材库</h1><span class="meta" id="metaInfo"></span>
-  <div class="searchbar">
+  <div class="toprow">
+    <h1>📚 求是申论素材库</h1><span class="meta" id="metaInfo"></span>
+    <button id="collapseTop" type="button" onclick="toggleTop()">收起 ▲</button>
+  </div>
+  <div class="searchbar" id="searchbar">
     <input id="q" type="search" placeholder="全文检索：规范词 / 金句 / 框架 / 案例 / 文章 / 真题 / 热点…（空格分词=同时包含）">
     <div class="scopes" id="scopes"></div>
     <span class="tag gr" id="annotToggle" style="cursor:pointer" onclick="toggleAnnot()">✏️ 标注模式</span>
@@ -2905,7 +2915,7 @@ body.annot #annotBar{display:flex}
 <script>
 var DATA=null;
 window.QS_ARTICLES=window.QS_ARTICLES||[];
-const SCOPES=["全部","规范词库","金句库","框架库","案例库","文章清单","真题库","省考库","方法论","题源对照","热点押题","错题本","限时模考","智能组卷","大作文","晨读打卡","背诵卡","文字自检","修订史","我的学情","热点专题","框架卡","激励坚持","AI教练","答案对照","搜题","过程教练","采分自标","材料训练","题型专攻","作文速构","答题助手","成长史","单题限时","错词规范","成长双推","同类薄弱","存档同步","求是时评","小题批改","GitHub 同步"];
+const SCOPES=["真题库","省考库","小题批改","材料训练","采分自标","规范词库","同类薄弱","答案对照","文字自检","错题本","求是时评","全部","金句库","框架库","案例库","作文速构","方法论","题源对照","单题限时","热点专题","AI教练","搜题","过程教练","答题助手","存档同步","GitHub 同步"];
 let state={scope:"全部",year:"全部",theme:"",paper:"",srcTheme:"",q:"",limit:120,prov:""};
 
 var themeOrder=[];
@@ -2942,14 +2952,30 @@ function init(){
   document.getElementById('metaInfo').textContent=
     `${DATA.entries.length} 素材小节 · ${DATA.articles.length} 篇文章 · ${(DATA.qsArticles||[]).length} 篇求是时评 · ${DATA.papers.length+_skn} 套真题(国考${DATA.papers.filter(p=>p.province==="国考").length}+省考${DATA.papers.filter(p=>p.province!=="国考").length+_skn}) · ${DATA.methods.length} 张方法论卡 · ${DATA.hotspots.length} 个热点 · 构建于 ${DATA.built}`;
   const sc=document.getElementById('scopes');
-  SCOPES.forEach(s=>{const b=document.createElement('button');b.textContent=s;
-    b.onclick=()=>{state.scope=s;state.theme="";state.paper="";state.srcTheme="";state.year="全部";state.prov="";state.limit=120;render();};sc.appendChild(b);});
+  const CORE_SCOPES=["真题库","省考库","小题批改","材料训练","采分自标","规范词库","同类薄弱","答案对照","文字自检","错题本","求是时评"];
+  const MORE_SCOPES=SCOPES.filter(s=>!CORE_SCOPES.includes(s));
+  function makeScopeBtn(s){const b=document.createElement('button');b.textContent=s;b.classList.toggle('core',CORE_SCOPES.includes(s));
+    b.onclick=()=>{state.scope=s;state.theme="";state.paper="";state.srcTheme="";state.year="全部";state.prov="";state.limit=120;render();
+      if(!CORE_SCOPES.includes(s)){const p=document.getElementById('morePanel');if(!p){const mb=sc.querySelector('.moreBtn');if(mb)mb.click();}}};
+    return b;}
+  CORE_SCOPES.forEach(s=>sc.appendChild(makeScopeBtn(s)));
+  if(MORE_SCOPES.length){
+    const moreBtn=document.createElement('button');moreBtn.textContent="更多 ▾";moreBtn.className="moreBtn";
+    moreBtn.onclick=()=>{const p=document.getElementById('morePanel');
+      if(p){p.remove();moreBtn.textContent="更多 ▾";moreBtn.classList.remove('open');}
+      else{const mp=document.createElement('div');mp.id="morePanel";mp.className="morePanel";
+        MORE_SCOPES.forEach(s=>mp.appendChild(makeScopeBtn(s)));
+        sc.appendChild(mp);moreBtn.textContent="更多 ▴";moreBtn.classList.add('open');}};
+    sc.appendChild(moreBtn);
+  }
   let timer;document.getElementById('q').addEventListener('input',e=>{
     clearTimeout(timer);timer=setTimeout(()=>{state.q=e.target.value.trim();state.limit=120;render();},200);});
   window.addEventListener('scroll',()=>{document.getElementById('top').style.display=scrollY>500?'block':'none';});
   render();
   try{preloadSKFromStorage();}catch(e){}
+  try{ if(localStorage.getItem('qs_top_collapsed')==='1'){ document.querySelector('header').classList.add('collapsed'); const ct=document.getElementById('collapseTop'); if(ct)ct.textContent='展开 ▼'; } }catch(e){}
 }
+function toggleTop(){const h=document.querySelector('header');const c=h.classList.toggle('collapsed');const ct=document.getElementById('collapseTop');if(ct)ct.textContent=c?'展开 ▼':'收起 ▲';try{localStorage.setItem('qs_top_collapsed',c?'1':'0');}catch(e){}}
 
 function filtered(){
   const terms=state.q?state.q.split(/\s+/).filter(Boolean):[];
@@ -2975,15 +3001,11 @@ function render(){
   if(state.scope==="限时模考"){renderMock();return;}
   if(state.scope==="我的学情"){renderStudyCenter();return;}
   // 第二/三/四批扩展模块（模块缺失时优雅降级，不影响主站）
-  const EXT={"晨读打卡":"renderMorning","背诵卡":"renderRecite","大作文":"renderEssay",
-             "修订史":"renderRevisions","智能组卷":"renderGenPaper","文字自检":"renderProof",
-             "热点专题":"renderTopics","框架卡":"renderFrames","激励坚持":"renderMotivation",
-             "AI教练":"renderAICoach","答案对照":"renderCompare","搜题":"renderSearch",
-             "过程教练":"renderCoach","采分自标":"renderSelfCal","材料训练":"renderMatTrain",
-             "题型专攻":"renderDrill","作文速构":"renderEssayBuilder","答题助手":"renderRecall",
-             "成长史":"renderGrowth","单题限时":"renderTimedDrill","错词规范":"renderErrMark",
-             "成长双推":"renderGrowthPush","同类薄弱":"renderWeakAgg","存档同步":"renderArchive",
-             "求是时评":"renderQsReviews","小题批改":"renderXiaotiPiGai","GitHub 同步":"renderGithubSync"};
+  const EXT={"作文速构":"renderEssayBuilder","单题限时":"renderTimedDrill","热点专题":"renderTopics",
+             "AI教练":"renderAICoach","搜题":"renderSearch","过程教练":"renderCoach",
+             "答题助手":"renderRecall","存档同步":"renderArchive","GitHub 同步":"renderGithubSync",
+             "答案对照":"renderCompare","小题批改":"renderXiaotiPiGai","求是时评":"renderQsReviews",
+             "文字自检":"renderProof","材料训练":"renderMatTrain","采分自标":"renderSelfCal","同类薄弱":"renderWeakAgg"};
   if(EXT[state.scope]){
     const fn=window[EXT[state.scope]];
     if(typeof fn==="function"){ try{ fn(); }catch(err){
