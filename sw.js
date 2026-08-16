@@ -1,5 +1,5 @@
 /* 求是申论素材库 · Service Worker（缓存优先 + 离线秒开） */
-const CACHE = "shenlun-v2";   // 版本升级：v1 -> v2（旧的 stale 缓存会被清理）
+const CACHE = "shenlun-v3";   // 版本升级：v2 -> v3（清掉旧的 10MB 内联 index 缓存）
 const SW_JS = "sw.js";        // 自己不缓存，保证逻辑更新即时生效
 
 self.addEventListener("install", function(e){
