@@ -2846,6 +2846,70 @@ body.annot #annotBar{display:flex}
 .b27-cmp b{ color: var(--accent); }
 
 </style>
+<style>/* === _b28.css === */
+/* ============ _b28 · 平板/iPad 适配层（粉笔式体验基础） ============ */
+/* 设计依据：业界 PWA 响应式权威范式（techbloat/appinstitute/moldstud/91zhanzhang 一致结论）
+   - 断点按内容：768(平板竖)/1024(平板横)/1280(大桌面)
+   - 流式单位 clamp 思路用 --font-scale/--line-scale 变量
+   - 触控目标 ≥44px（Apple HIG）
+   - env(safe-area-inset-*)+dvh 处理刘海/圆角/地址栏 */
+:root{ --font-scale:1; --line-scale:1; }
+body{ font-size:calc(14px * var(--font-scale)); }
+.stem,.card .bd div,.inner,.review,.ai .inner,.subj,.paper-annot .mat-h{
+  line-height:calc(1.8 * var(--line-scale));
+}
+/* 护眼模式：只改内容区配色，不动品牌红头 */
+body.eye{
+  --bg:#f3ead6; --panel:#fbf5e9; --txt:#3a2f1a; --sub:#7a6a4a;
+  --line:#e6d8b8; --red-soft:#f0e6cf; --hl:#f6e2a8;
+}
+.scopes button,.yearchips button,.more,.tag{ padding:8px 14px; min-height:44px; }
+nav .tlink{ padding:10px 10px; min-height:44px; }
+header{
+  padding-top:calc(12px + env(safe-area-inset-top));
+  padding-left:calc(16px + env(safe-area-inset-left));
+  padding-right:calc(16px + env(safe-area-inset-right));
+}
+.layout{
+  padding-left:calc(16px + env(safe-area-inset-left));
+  padding-right:calc(16px + env(safe-area-inset-right));
+  padding-bottom:calc(16px + env(safe-area-inset-bottom));
+  min-height:100dvh;
+}
+#navToggle{ display:none; }
+#navMask{ display:none; }
+
+/* —— 断点 1：平板竖屏 / 手机（≤1023px）：左导航收成抽屉 —— */
+@media (max-width:1023px){
+  #navToggle{
+    display:inline-block; margin-right:10px; flex-shrink:0;
+    border:1px solid rgba(255,255,255,.7); background:rgba(255,255,255,.15);
+    color:#fff; border-radius:8px; padding:6px 12px; font-size:14px; cursor:pointer; min-height:40px;
+  }
+  .layout{ flex-direction:column; padding:12px; }
+  nav{
+    position:fixed; top:0; left:0; bottom:0; width:78%; max-width:320px; z-index:50;
+    transform:translateX(-100%); transition:transform .25s ease;
+    box-shadow:0 0 24px rgba(0,0,0,.3);
+    padding-top:calc(60px + env(safe-area-inset-top)); overflow:auto;
+  }
+  nav.open{ transform:none; }
+  main{ width:100%; }
+  #navMask.show{ display:block; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:49; }
+}
+
+/* —— 断点 2：iPad 横屏 / 桌面（≥1024px）：真题库两列网格，一屏两套卷 —— */
+@media (min-width:1024px){
+  #content.tiku-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; align-items:start; }
+  #content.tiku-grid .empty{ grid-column:1 / -1; }
+}
+
+/* —— 断点 3：大桌面（≥1280px）：正文限宽，避免行过长 —— */
+@media (min-width:1280px){
+  .card .bd{ max-width:920px; }
+}
+
+</style>
 <style>/* === _patch.css === */
 /* 作答弹窗增强样式（补丁层，由 _patch_site.py 配套） */
 .ans-proc{margin:10px 0;border:1px solid var(--line);border-radius:8px;background:#fcfcfd;padding:8px 10px}
@@ -17413,6 +17477,131 @@ window.b8Copy         = b8Copy;
     if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", function(){ var c=loadCfg(); if(c.token && !c.owner) tryWhoami(); tryAutoSyncOnLoad(); });
     else { var c=loadCfg(); if(c.token && !c.owner) tryWhoami(); tryAutoSyncOnLoad(); }
   }
+})();
+
+</script>
+<script>/* === _b28.js === */
+/* ============ _b28 · 平板/iPad 适配层（粉笔式体验基础） ============ */
+/* 纯增强层：挂设置面板(字号/行距/护眼) + 抽屉导航 + 真题横屏两列。
+   不修改任何旧模块逻辑，仅读取/补样式与 DOM，风险可控。 */
+(function(){
+  "use strict";
+  var KEY = "qs_display_v1";
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+  function save(o){ try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){} }
+  var cfg = load();
+
+  function applyCfg(){
+    var fs = cfg.font || 1, ls = cfg.line || 1;
+    document.documentElement.style.setProperty("--font-scale", fs);
+    document.documentElement.style.setProperty("--line-scale", ls);
+    document.body.classList.toggle("eye", !!cfg.eye);
+    var b = document.getElementById("eyeBtn");
+    if(b) b.textContent = cfg.eye ? "🌞 护眼:开" : "🌙 护眼:关";
+  }
+
+  function applyTikuGrid(){
+    var c = document.getElementById("content"); if(!c) return;
+    var sc = (window.state && state.scope) || "";
+    c.classList.toggle("tiku-grid", sc === "真题库" || sc === "省考库");
+  }
+
+  function buildUI(){
+    var header = document.querySelector("header");
+    var toprow = header && header.querySelector(".toprow");
+    if(!header) return;
+
+    // 抽屉导航按钮（窄屏显示）
+    if(!document.getElementById("navToggle")){
+      var t = document.createElement("button");
+      t.id = "navToggle"; t.textContent = "☰ 目录";
+      t.onclick = function(){
+        var n = document.getElementById("nav"); if(n) n.classList.toggle("open");
+        var m = document.getElementById("navMask"); if(m) m.classList.toggle("show");
+      };
+      if(toprow) toprow.insertBefore(t, toprow.firstChild);
+      else header.insertBefore(t, header.firstChild);
+    }
+
+    // 显示设置按钮
+    if(!document.getElementById("dispBtn")){
+      var b = document.createElement("button");
+      b.id = "dispBtn"; b.textContent = "⚙️ 显示";
+      b.style.cssText = "margin-left:10px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.15);color:#fff;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;min-height:40px";
+      b.onclick = togglePanel;
+      if(toprow) toprow.appendChild(b);
+      else header.appendChild(b);
+    }
+
+    // 遮罩
+    if(!document.getElementById("navMask")){
+      var m = document.createElement("div"); m.id = "navMask";
+      m.onclick = function(){
+        var n = document.getElementById("nav"); if(n) n.classList.remove("open");
+        m.classList.remove("show");
+      };
+      document.body.appendChild(m);
+    }
+
+    // 设置面板
+    if(!document.getElementById("dispPanel")){
+      var p = document.createElement("div"); p.id = "dispPanel";
+      p.style.cssText = "display:none;position:fixed;top:64px;right:12px;z-index:60;background:#fff;color:#1f2937;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.18);font-size:13px;min-width:210px";
+      p.innerHTML =
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+          '<b>显示设置</b>' +
+          '<span id="eyeBtn" style="cursor:pointer;color:#8e2f22" onclick="__b28.toggleEye()">' +
+            (cfg.eye ? "🌞 护眼:开" : "🌙 护眼:关") + '</span></div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin:6px 0">' +
+          '<span>字号</span><span>' +
+          '<button onclick="__b28.chgFont(-0.1)">A-</button> <b id="fsVal">' +
+            Math.round((cfg.font||1)*100) + '%</b> <button onclick="__b28.chgFont(0.1)">A+</button></span></div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin:6px 0">' +
+          '<span>行距</span><span>' +
+          '<button onclick="__b28.chgLine(-0.1)">−</button> <b id="lnVal">' +
+            Math.round((cfg.line||1)*100) + '%</b> <button onclick="__b28.chgLine(0.1)">＋</button></span></div>' +
+        '<div style="color:#6b7280;font-size:11px;margin-top:6px">设置自动保存，下次打开生效</div>';
+      document.body.appendChild(p);
+    }
+  }
+
+  function togglePanel(){
+    var p = document.getElementById("dispPanel");
+    if(p) p.style.display = (p.style.display === "none") ? "block" : "none";
+  }
+  function updVal(){
+    var f = document.getElementById("fsVal"); if(f) f.textContent = Math.round((cfg.font||1)*100) + "%";
+    var l = document.getElementById("lnVal"); if(l) l.textContent = Math.round((cfg.line||1)*100) + "%";
+  }
+
+  window.__b28 = {
+    chgFont: function(d){ cfg.font = Math.min(1.6, Math.max(0.8, (cfg.font||1) + d)); save(cfg); applyCfg(); updVal(); },
+    chgLine: function(d){ cfg.line = Math.min(1.8, Math.max(0.8, (cfg.line||1) + d)); save(cfg); applyCfg(); updVal(); },
+    toggleEye: function(){ cfg.eye = !cfg.eye; save(cfg); applyCfg(); }
+  };
+
+  function wrapRender(){
+    if(typeof window.render !== "function") return;
+    var o = window.render;
+    window.render = function(){ o.apply(this, arguments); applyTikuGrid(); };
+  }
+
+  function init(){
+    buildUI();
+    applyCfg();
+    wrapRender();
+    applyTikuGrid();
+    window.addEventListener("resize", function(){
+      if(window.innerWidth > 1023){
+        var n = document.getElementById("nav"); if(n) n.classList.remove("open");
+        var m = document.getElementById("navMask"); if(m) m.classList.remove("show");
+      }
+    });
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+  window.addEventListener("load", function(){ wrapRender(); applyTikuGrid(); });
 })();
 
 </script>
